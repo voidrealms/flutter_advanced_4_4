@@ -18,7 +18,9 @@ Permission permissionFromString(String value) {
 
 
 void main()  async {
-
+  //Added for newest version of flutter
+  WidgetsFlutterBinding.ensureInitialized();
+  
   cameras = await availableCameras();
   
   await SimplePermissions.requestPermission(permissionFromString('Permission.WriteExternalStorage'));
