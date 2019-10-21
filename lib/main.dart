@@ -18,11 +18,11 @@ Permission permissionFromString(String value) {
 
 
 void main()  async {
-  //Added for newest version of flutter
+
+  //Add this
   WidgetsFlutterBinding.ensureInitialized();
-  
   cameras = await availableCameras();
-  
+
   await SimplePermissions.requestPermission(permissionFromString('Permission.WriteExternalStorage'));
   await SimplePermissions.requestPermission(permissionFromString('Permission.Camera'));
 
@@ -110,24 +110,24 @@ class _State extends State<MyApp> {
         title: new Text('Name here'),
       ),
       body: new Container(
-        padding: new EdgeInsets.all(32.0),
-        child: new Center(
-          child: new Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
+          padding: new EdgeInsets.all(32.0),
+          child: new Center(
+            child: new Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
 
-              new Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  new RaisedButton(onPressed: takePicture, child: new Text('Take Picture'),),
-                  new RaisedButton(onPressed: SimplePermissions.openSettings, child: new Text('Settings'),),
-                ]),
-              new AspectRatio(aspectRatio: 1.0, child: new CameraPreview(controller),)
-            ],
-          ),
-        )
+                new Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: <Widget>[
+                      new RaisedButton(onPressed: takePicture, child: new Text('Take Picture'),),
+                      new RaisedButton(onPressed: SimplePermissions.openSettings, child: new Text('Settings'),),
+                    ]),
+                new AspectRatio(aspectRatio: 1.0, child: new CameraPreview(controller),)
+              ],
+            ),
+          )
       ),
     );
   }
